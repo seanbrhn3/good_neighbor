@@ -1,0 +1,12 @@
+{%extends 'layout.html'%}
+  {%block body%}
+  <h1>Registration</h1>
+    <form action="" methods="POST">
+      Business Name:<input type="text" name="business_name" placeholder="enter Business name">
+      Account Number:<input type="text" name="account_number" placeholder="enter account number">
+      Description of Business:<input type="textarea" name="description">
+      Password:<input type="hidden" name="password" placeholder="password">
+      <input type="submit">
+    </form>
+    <a href="{{url_for('index')}}">Back</a>
+  {%endblock%}
