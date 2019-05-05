@@ -1,12 +1,21 @@
 {%extends 'layout.html'%}
   {%block body%}
   <h1>Registration</h1>
-    <form action="" methods="POST">
-      Business Name:<input type="text" name="business_name" placeholder="enter Business name">
+    <form action="" method="POST">
+      <ul>
+        <li>Business Name:<input type="text" name="business_name" placeholder="enter Business name"></li>
+        <li>Account Number:<input type="text" name="account_number" placeholder="enter account number"></li>
+        <li>Expiration Date:<input type="text" name="exp_date" placeholder="expiration date"></li>
+        <li>Description of Business:<input type="textarea" name="description"></li>
+        <li>Password:<input type="password" name="password" placeholder="password"></li>
+        <li><input type="submit"></li>
+      </ul>
+      <!-- Business Name:<input type="text" name="business_name" placeholder="enter Business name">
       Account Number:<input type="text" name="account_number" placeholder="enter account number">
+      Expiration Date:<input type="text" name="exp_date" placeholder="expiration date">
       Description of Business:<input type="textarea" name="description">
-      Password:<input type="hidden" name="password" placeholder="password">
-      <input type="submit">
+      Password:<input type="password" name="password" placeholder="password">
+      <input type="submit"> -->
     </form>
     <a href="{{url_for('index')}}">Back</a>
   {%endblock%}

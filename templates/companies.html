@@ -1,0 +1,26 @@
+{%extends 'layout.html'%}
+  {%block body%}
+  <h1>Companies on board</h1>
+  {%for i in pool%}
+  <h2>Current Pool: {{i['amount_given']}}</h2>
+  {%endfor%}
+  <table class="table table-hover">
+<thead>
+  <tr>
+    <th scope="col">Business</th>
+    <th scope="col">Description</th>
+    <th scope="col">Amount Given</th>
+  </tr>
+</thead>
+<tbody>
+  {%for i in comps%}
+  <tr>
+    <td>{{i['businessName']}}</td>
+    <td>{{i['description']}}</td>
+    <td>{{i['amount_given']}}</td>
+  </tr>
+{%endfor%}
+</tbody>
+</table>
+<a href="{{url_for('index')}}">Home</a>
+  {%endblock%}

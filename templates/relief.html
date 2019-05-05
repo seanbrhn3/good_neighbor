@@ -1,0 +1,36 @@
+{%extends 'layout.html'%}
+  {%block body%}
+    <h1>Request Relief</h1>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Business</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount Given</th>
+      <th scope="col">Request Relief Aid</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for i in company%}
+    <tr>
+      <td>{{i['businessName']}}</td>
+      <td>{{i['description']}}</td>
+      <td>{{i['amount_given']}}</td>
+    </tr>
+  {%endfor%}
+  </tbody>
+  </table>
+  <h3>What Happened?</h3>
+  <form action="" method="POST">
+    <h3>Reason for aid:</h3>
+    <textarea rows="10" cols="50" name="description"></textarea><br>
+    <input type="checkbox" name="Revenue Stream" value="Revenue Stream"> Restoring their Revenue Stream <br>
+    <input type="checkbox" nam="Recovery" value="Recovery">Gaining Access to Funds for both Short Term & Long Term Recovery<br>
+    <input type="checkbox" name="Paying Employees" value="Paying Employees">Paying Employees<br>
+    <input type="checkbox" name="Supplier" value="Supplier"> Finding Suppliers Still in Operation<br>
+    <input type="checkbox" name="Communication" value="Communication">Dealing with Disruption to Communications & Service such as Electricity <br>
+    <input type="text" name="amount_needed"  placeholder="How much do you need?">
+    <input type="submit">
+  </form>
+  <a href="{{url_for('index')}}">Cancel</a>
+  {%endblock%}
