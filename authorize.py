@@ -43,3 +43,5 @@ class Auth():
         return db.pool.remove()
     def pool(self):
         return db.pool.find()
+    def deleteVotes(self):
+        return db.vote.remove()

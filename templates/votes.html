@@ -1,11 +1,12 @@
 {%extends 'layout.html'%}
   {%block body%}
     <h1>Votes</h1>
+  <form action="" method="POST">
     <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Company</th>
-      <th scope="col">Reason</th>
+      <th scope="col">Reasons</th>
       <th scope="col"># votes</th>
       <th scope="col">Votes to help</th>
     </tr>
@@ -16,10 +17,11 @@
       <td>{{i['company']}}</td>
       <td>{{i['reasons']}}</td>
       <td>{{i['votes']}}</td>
-      <td><input type="submit" class="btn btn-success" name="vote"></td>
+      <td><input type="submit" class="btn btn-success" name="vote" value="{{i['company']}}"></td>
     </tr>
   {%endfor%}
   </tbody>
   </table>
+</form>
   <a href="{{url_for('index')}}">Home</a>
   {%endblock%}

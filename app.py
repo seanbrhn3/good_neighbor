@@ -7,7 +7,7 @@ db = client.test
 trans = Auth()
 # trans.deleteAll()
 # trans.deletePool()
-# db.votes.remove()
+#db.vote.remove()
 @app.route("/",methods=["GET","POST"])
 def index():
     if request.method=="POST":
@@ -66,12 +66,13 @@ def relief(company):
     if request.method == "POST":
         print(request.form.keys())
         values = {}
-        values[company] = company
+        values['company'] = company
         reasons = []
         for i in request.form.keys():
             reasons.append(request.form[i])
         values['reasons'] = reasons
         values["votes"] = 0
+        values["amount_needed"] = request.form['amount_needed']
         db.vote.insert_one(values)
         return redirect(url_for('votes',comp=company))
     return render_template("relief.html",company=company1)
@@ -82,6 +83,15 @@ def form(request):
 
 @app.route('/votes/<comp>',methods=["GET","POST"])
 def votes(comp):
+    if request.method == "POST":
+        if comp != request.form['vote']:
+            print("reached")
+            db.vote.update({"company":request.form['vote']},
+            {"$inc": {"votes":1}})
+        for i in db.vote.find():
+            if i["votes"] == 3:
+                return "<h1>{} recieved funds</h1>".format(comp)
+            # return render_template("votes.html",values=db.vote.find())
     return render_template("votes.html",values=db.vote.find())
 
 if __name__ == "__main__":
